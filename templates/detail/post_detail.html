@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-10 col-lg-offset-1 text-center font_logo_ciril ">
+				<h2>{{news.heading}}</b></h2>
+				<hr>
+				<p class="font_sizes">
+					{{news.post}}
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="wrapper">
+		<div class="divider div-transparent div-dot"></div>
+	</div>
+</section>
+
+
+<section id="contact">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2 text-center">
+				<h2 class="section-heading">Сделать заказа на съёмку</h2>
+				<hr class="primary">
+				<div class="regularform">
+					<form method="POST" action="{% url 'create_order' news.id %}" id="contactform" class="text-left">
+						{% csrf_token %}
+						<input name="name" type="text" class="col-md-6 norightborder" placeholder="Имя*">
+						<input name="email" type="email" class="col-md-6" placeholder="Эл. почта *">
+						<input type="text" name="phone" id="" class="col-md-12" , placeholder="Контактный номер">
+						<textarea name="comment" class="col-md-12"
+							placeholder="Комментарий к заказу (по желанию)*"></textarea>
+						<button type="submit" class="btn btn-round btn-white btn-xl"
+							style="position: relative;left: 50%;transform: translate(-50%, 0);width: 35%;border: 1px solid black;">Заказать</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock %}
