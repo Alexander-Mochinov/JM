@@ -16,6 +16,7 @@
 	<!-- Plugin CSS -->
 	<link rel="stylesheet" href="{% static 'css/animate.min.css' %}" type="text/css">
 	<!-- Custom CSS -->
+	{% block scrpts %}{% endblock %}
 	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/4dda9e4022.js" crossorigin="anonymous"></script>
@@ -34,33 +35,29 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand page-scroll" href="/">
-					<!-- <img src="{% static 'img/logo.png' %}"alt="logodayana"> -->
 					Julia Mochinova
 				</a>
 			</div>
-			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
 					<li class="active">
-						<a class="page-scroll" href="#page-top">Главная</a>
+						<a class="page-scroll" href="/#page-top">Главная</a>
 					</li>
 					<li class="">
-						<a class="page-scroll" href="#about">Обо мне</a>
+						<a class="page-scroll" href="/#about">Обо мне</a>
 					</li>
 					<li class="">
-						<a class="page-scroll" href="#portfolio">Портфолио</a>
+						<a class="page-scroll" href="/#portfolio">Портфолио</a>
 					</li>
 					<li class="">
-						<a class="page-scroll" href="#pricing">Цены</a>
+						<a class="page-scroll" href="/#pricing">Цены</a>
 					</li>
 					<li class="">
-						<a class="page-scroll" href="#contact">Контакты</a>
+						<a class="page-scroll" href="/#contact">Контакты</a>
 					</li>
 				</ul>
 			</div>
-			<!-- /.navbar-collapse -->
 		</div>
-		<!-- /.container -->
 	</nav>
 	{% block content %}
 	{% endblock %}

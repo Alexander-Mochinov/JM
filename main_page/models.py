@@ -34,19 +34,46 @@ class Portfolio(models.Model):
 		verbose_name_plural = 'Портфолио'
 		db_table = 'portfolio'
 
-class News(models.Model):
+class Prices(models.Model):
+	heading = models.CharField('Заголовок',max_length = 350)
+	coast = models.PositiveIntegerField('Стоимость')
+	pakeges = models.TextField('Пакет услуг')
 
+	def __str__(self):
+		return str(self.heading)
+	
+	class Meta:
+		verbose_name  = 'Цена'
+		verbose_name_plural = 'Цены'
+		db_table = 'prices'
+
+
+class News(models.Model):
 	heading = models.CharField('Заголовок',max_length = 350)
 	# Фото проекта 
 	project_img_one = models.ImageField( upload_to='uploads/images/%Y/%m/%d/',blank=True)
+	
+	heading_for_img_one =  models.CharField('Заголовок к первой фотографии',max_length = 350,null=True)
+
+	post_for_img_one =  models.CharField('Описание к первой фотографии',max_length = 350,null=True)
 
 	# Фото проекта 
 	project_img_two = models.ImageField( upload_to='uploads/images/%Y/%m/%d/',blank=True)
+	
+	heading_for_img_two =  models.CharField('Заголовок ко второй фотографии',max_length = 350,null=True)
+	
+	post_for_img_two =  models.CharField('Описание ко второй фотографии',max_length = 350,null=True)
 
 	# Фото проекта 
 	project_img_three = models.ImageField( upload_to='uploads/images/%Y/%m/%d/',blank=True)
 
+	heading_for_img_three =  models.CharField('Заголовок к третьей фотографии',max_length = 350,null=True)
+
+	post_for_img_three =  models.CharField('Описание к третьей фотографии',max_length = 350,null=True)
+
 	publication_date = models.DateField("Дата публикации", default=date.today, db_index=True)
+
+	price = models.ForeignKey(Prices, on_delete=models.SET_NULL,null=True, verbose_name="Цена на ивент)")
 	# Пост
 	post = models.TextField('Анонс')
 

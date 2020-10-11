@@ -1,11 +1,141 @@
 {% extends 'base.html' %}
 {%load static%}
+{% block scrpts %}
+<link rel="stylesheet" href="{% static 'css/slider.css' %}">
+{% endblock %}
 {% block content %}
 <section>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
+				<main class="intro-section">
+					<div class="container">
+						<div class="grid">
+							<div class="column-xs-12">
+								<ul class="slider">
+									<!-- img one -->
+									<li class="slider-item active">
+										<div class="grid vertical">
+											<div class="column-xs-12 column-md-2 hide-mobile">
+												<div class="intro">
+													<a href="#">
+														<h1 class="title">
+															<span class="underline">{{news.heading_for_img_one}}</span>
+														</h1>
+													</a>
+												</div>
+											</div>
+											<div class="column-xs-12 column-md-10">
+												<div class="image-holder">
+													<img
+														src="{% if news.project_img_one %}{{news.project_img_one.url}}{% else %}{% endif %}">
+												</div>
+												<div class="grid">
+													<div class="column-xs-12 column-md-9">
+														<div class="intro show-mobile">
+															<a href="#">
+																<h1 class="title">
+																	<span
+																		class="underline">{{news.heading_for_img_one}}</span>
+																</h1>
+															</a>
+														</div>
+														<p class="description">{{news.post_for_img_one}}</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
 
+									<!-- img one -->
+
+
+									<!-- img two -->
+									<li class="slider-item">
+										<div class="grid vertical">
+											<div class="column-xs-12 column-md-2 hide-mobile">
+												<div class="intro">
+													<a href="#">
+														<h1 class="title"><span
+																class="underline">{{news.heading_for_img_two}}</span>
+														</h1>
+													</a>
+												</div>
+											</div>
+											<div class="column-xs-12 column-md-10">
+												<div class="image-holder">
+													<img
+														src="{% if news.project_img_two %}{{news.project_img_two.url}}{% else %} {% endif %}">
+												</div>
+												<div class="grid">
+													<div class="column-xs-12 column-md-9">
+														<div class="intro show-mobile">
+															<a href="#">
+																<h1 class="title"><span
+																		class="underline">{{news.heading_for_img_two}}</span>
+																</h1>
+															</a>
+														</div>
+														<p class="description">{{news.post_for_img_two}}</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+									<!-- img two -->
+
+
+									<!-- img three -->
+									<li class="slider-item">
+										<div class="grid vertical">
+											<div class="column-xs-12 column-md-2 hide-mobile">
+												<div class="intro">
+													<a href="#">
+														<h1 class="title"><span
+																class="underline">{{news.heading_for_img_three}}</span>
+														</h1>
+													</a>
+												</div>
+											</div>
+											<div class="column-xs-12 column-md-10">
+												<div class="image-holder">
+													<img
+														src="{% if news.project_img_three %}{{news.project_img_three.url}}{% else %}{% endif %}">
+												</div>
+												<div class="grid">
+													<div class="column-xs-12 column-md-9">
+														<div class="intro show-mobile">
+															<a href="#">
+																<h1 class="title"><span
+																		class="underline">{{news.heading_for_img_three}}</span>
+																</h1>
+															</a>
+														</div>
+														<p class="description">{{news.post_for_img_three}}</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+
+								</ul>
+								<div class="grid">
+									<div class="column-xs-12">
+										<div class="controls">
+											<button class="previous">
+												<span class="visually-hidden">Previous</span>
+												<span class="icon arrow-left" aria-hidden="true"></span>
+												</a>
+												<button class="next">
+													<span class="visually-hidden">Next</span>
+													<span class="icon arrow-right" aria-hidden="true"></span>
+													</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+				</main>
 			</div>
 		</div>
 	</div>
@@ -32,21 +162,98 @@
 			<div class="col-md-8 col-md-offset-2 text-center">
 				<h2 class="section-heading">Сделать заказа на съёмку</h2>
 				<hr class="primary">
+				<div class="row">
+					{% if news.price %}
+					<div class="col-md-12">
+						<div class="coasts" style="text-align: left !important;">
+							<div class="headers" style="font-size: 25px;">
+								{{news.price.header}}
+							</div>
+							<div class="prices">
+
+								Цена: <b>{{news.price.coast}} ₽</b>
+							</div>
+							<div class="list_pakeges">
+								Пакет услуг: <br> {{news.price.pakeges|linebreaks}}
+							</div>
+						</div>
+					</div>
+					{% endif %}
+				</div>
 				<div class="regularform">
 					<form method="POST" action="{% url 'create_order' news.id %}" id="contactform" class="text-left">
 						{% csrf_token %}
-						<input name="name" type="text" class="col-md-6 norightborder" placeholder="Имя*">
-						<input name="email" type="email" class="col-md-6" placeholder="Эл. почта *">
-						<input type="text" name="phone" id="" class="col-md-12" , placeholder="Контактный номер">
-						<textarea name="comment" class="col-md-12"
+						<input name="name" type="text" required class="col-md-6 col-sm-12 " placeholder="Имя*">
+						<input name="email" type="email" required class="col-md-6 col-sm-12" placeholder="Эл. почта *">
+						<input type="text" name="phone" required id="" class="col-md-12 col-sm-12" ,
+							placeholder="Контактный номер">
+						<textarea name="comment" required class="col-md-12 col-sm-12"
 							placeholder="Комментарий к заказу (по желанию)*"></textarea>
 						<button type="submit" class="btn btn-round btn-white btn-xl"
-							style="position: relative;left: 50%;transform: translate(-50%, 0);width: 35%;border: 1px solid black;">Заказать</button>
+							style="position: relative;left: 50%;transform: translate(-50%, 0);width: auto;border: 1px solid black;">Заказать</button>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
+
+<style>
+
+</style>
+<script>
+	const items = document.querySelectorAll('.slider-item');
+	const itemCount = items.length;
+	const nextItem = document.querySelector('.next');
+	const previousItem = document.querySelector('.previous');
+	const navItem = document.querySelector('a.toggle-nav');
+	let count = 0;
+
+	function showNextItem() {
+		items[count].classList.remove('active');
+
+		if (count < itemCount - 1) {
+			count++;
+		} else {
+			count = 0;
+		}
+
+		items[count].classList.add('active');
+		console.log(count);
+	}
+
+	function showPreviousItem() {
+		items[count].classList.remove('active');
+
+		if (count > 0) {
+			count--;
+		} else {
+			count = itemCount - 1;
+		}
+
+		items[count].classList.add('active');
+		// Check if working...
+		console.log(count);
+	}
+
+	function toggleNavigation() {
+		this.nextElementSibling.classList.toggle('active');
+	}
+
+	function keyPress(e) {
+		e = e || window.event;
+
+		if (e.keyCode == '37') {
+			showPreviousItem();
+		} else if (e.keyCode == '39') {
+			showNextItem();
+		}
+	}
+
+	nextItem.addEventListener('click', showNextItem);
+	previousItem.addEventListener('click', showPreviousItem);
+	document.addEventListener('keydown', keyPress);
+	navItem.addEventListener('click', toggleNavigation);
+</script>
 
 {% endblock %}

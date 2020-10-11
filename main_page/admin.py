@@ -1,5 +1,11 @@
 from django.contrib import admin
-from .models import Questions_and_Answers, News, Orders, Testimonials,Portfolio
+from .models import Questions_and_Answers, News, Orders, Testimonials,Portfolio,Prices
+
+
+@admin.register(Prices)
+class PricesAdmin(admin.ModelAdmin):
+    pass
+
 
 @admin.register(Portfolio)
 class PortfolioAdmin(admin.ModelAdmin):

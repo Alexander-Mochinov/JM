@@ -33,14 +33,15 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand page-scroll" href="/">
-					<!-- <img src="{% static 'img/logo.png' %}"alt="logodayana"> -->
-					Julia Mochinova
+				<a href="/">
+					<img class="logo__img" src="{% static 'img/logo.png' %}" alt="logodayana" style="width: 85px;">
+					<!-- Julia Mochinova -->
 				</a>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav navbar-right">
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="
+    padding: 15px 0 0;">
+				<ul class="nav navbar-nav navbar-right menu__list">
 					<li class="active">
 						<a class="page-scroll" href="#page-top">Главная</a>
 					</li>
@@ -79,13 +80,13 @@
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner" role="listbox">
 			<!-- First slide -->
-			<div class="item active" style="background-image:url('{% static 'img/2.jpg' %}')">
+			<div class="item active img__carousel" style="background-image:url('{% static 'img/2.jpg' %}')">
 				<div class="carousel-caption">
 					<h1 data-animation="animated bounceInUp" class="font_logo">Julia Mochinova</h1>
 					<h2 data-animation="animated bounceInDown" class="font_logo">Photographer </h2>
 				</div>
 			</div>
-			<div class="item" style="background-image:url('{% static 'img/c_2.jpg' %}')">
+			<div class="item img__carousel" style="background-image:url('{% static 'img/c_2.jpg' %}')">
 				<div class="carousel-caption">
 					<h1 data-animation="animated bounceInDown" class="font_logo">Welcome</h1>
 				</div>
@@ -146,7 +147,7 @@
 							<label for="tab-{{q_a_a.id}}">{{q_a_a.questions}}
 							</label>
 							<div class="tab-content">
-								<p>{{q_a_a.answers|safe}}</p>
+								<p>{{q_a_a.answers|linebreaks}}</p>
 							</div>
 						</div>
 						{% endfor %}
@@ -225,6 +226,11 @@
 						<a data-slide="next" href="#quote-carousel" class="right carousel-control"><i
 								class="fa fa-chevron-right"></i></a>
 					</div>
+					<button type="button" class="btn waves-effect waves-light " data-toggle="modal"
+						data-target="#modalLRFormDemo" style="
+    margin: 0 auto;
+    display: block;">Оставить отзыв
+					</button>
 				</div>
 			</div>
 		</div>
@@ -273,7 +279,7 @@
 	{% endif %}
 	<!-- Section Pricing
 	================================================== -->
-	<section id="pricing" class="no-padding">
+	<section id="pricing">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
@@ -285,111 +291,61 @@
 		</div>
 		<div class="container">
 			<div class="row">
-				<div class="wow-pricing-table col-md-3">
-					<div class="wow-pricing">
-						<div class="wow-pricing-header">
-							<h5>Mini</h5>
-							<div class="wow-pricing-cost">
-								5000 ₽
-							</div>
+				{% for price in prices %}
+				<div class="col-md-3 ">
+					<div class="coast">
+						<div class="prev_text">
+							<h4>{{price.heading}}</h4>
 						</div>
-						<div class="wow-pricing-content">
-							<ul>
-								<li>1 образ</li>
-								<li>Фотосъёмка малыша (без участия родителей)</li>
-								<li>Выезд на дом со всем необходимым реквизитом</li>
-								<li>Авторская обработка 5 фотографий</li>
-								<li>Передача фотографий через файлообменник</li>
-								<li>Время съёмки 1- 1,5 часа</li>
-								<li>Срок готовности фотографий 1 месяц</li>
+						<div class="price">{{price.coast}} ₽</div>
+						<hr>
+						<div class="strong_block">
+							{{price.pakeges|linebreaks}}
+						</div>
+						<div class="order">
+							<a href="{% url 'order' price.id %}">
+								<button type="button" class="btn btn-round btn-white btn-xl"
+									style="left: 50%;transform: translate(-50%, 0);border: 1px solid black;outline: transparent;">Заказать</button>
+							</a>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
 
-							</ul>
-						</div>
-						<div class="wow-pricing-button">
-							<a href="#" class="wow-button buttonprice" target="_self" rel="nofollow"><span
-									class="wow-button-inner">Заказать</span></a>
-						</div>
-					</div>
-				</div>
-				<!-- /.col-md-4 -->
-				<div class="wow-pricing-table col-md-3">
-					<div class="wow-pricing featured">
-						<div class="wow-pricing-header">
-							<h5>STANDART</h5>
-							<div class="wow-pricing-cost">
-								8000 ₽
-							</div>
-						</div>
-						<div class="wow-pricing-content">
-							<ul>
-								<li>2-3 образа</li>
-								<li>Выезд на дом со всем необходимым реквизитом</li>
-								<li>Авторская обработка 12 фотографий</li>
-								<li>Время съёмки 1,5 -2 часа</li>
-								<li>Передача фотографий через файлообменник</li>
-								<li>Срок готовности фотографий 1 месяц</li>
-							</ul>
-						</div>
-						<div class="wow-pricing-button">
-							<a href="#" class="wow-button buttonprice" target="_self" rel="nofollow"><span
-									class="wow-button-inner">Заказать</span></a>
+				<!--Modal: Login / Register Form Demo-->
+				<div class="modal fade" id="modalLRFormDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+					aria-hidden="true">
+					<div class="modal-dialog cascading-modal" role="document">
+						<div class="block__modal">
+							<form class="material-form" action="{% url 'add_testimonial' %}" method="GET">
+								<div class="material-form__container">
+									<input class="material-form__input" name="name" type="text" placeholder=" "
+										id="input-name" />
+									<label class="material-form__label" form="input-name">Имя</label>
+									<div class="material-form__focus-animation"></div>
+								</div>
+								<div class="material-form__container">
+									<input class="material-form__input" name="email" type="email" id="input-email"
+										placeholder=" " />
+									<label class="material-form__label" form="input-email">E-mail</label>
+									<div class="material-form__focus-animation"></div>
+								</div>
+								<div class="material-form__container">
+									<textarea class="material-form__input" name="text" name=""
+										id="text-area"></textarea>
+									<label class="material-form__label" form="input-password">Ваш отзыв</label>
+									<div class="material-form__focus-animation"></div>
+								</div>
+								<button class="material-form__button">Оставить комментарий</button>
+							</form>
 						</div>
 					</div>
 				</div>
-				<!-- /.col-md-4 -->
-				<div class="wow-pricing-table col-md-3">
-					<div class="wow-pricing">
-						<div class="wow-pricing-header">
-							<h5>COMFORT</h5>
-							<div class="wow-pricing-cost">
-								12000 ₽
-							</div>
-						</div>
-						<div class="wow-pricing-content">
-							<ul>
-								<li>3-4 образа</li>
-								<li>Фотосъёмка малыша (при желании с родными)</li>
-								<li>Выезд на дом со всем необходимым реквизитом</li>
-								<li>Авторская обработка 15 фотографий + минибук 15х15, 10 разворотов</li>
-								<li>Время съёмки 2-2,5 часа</li>
-								<li>Передача фотографий c доставкой на дом</li>
-								<li>Срок готовности фотографий 1-1,5 месяц минибук 2 месяца</li>
-							</ul>
-						</div>
-						<div class="wow-pricing-button">
-							<a href="#" class="wow-button buttonprice" target="_self" rel="nofollow"><span
-									class="wow-button-inner">Заказать</span></a>
-						</div>
-					</div>
-				</div>
-				<div class="wow-pricing-table col-md-3">
-					<div class="wow-pricing">
-						<div class="wow-pricing-header">
-							<h5>PREMIUM</h5>
-							<div class="wow-pricing-cost">
-								17000 ₽
-							</div>
-						</div>
-						<div class="wow-pricing-content">
-							<ul>
-								<li>4-5 образов</li>
-								<li>Фотосъёмка малыша (при желании с родными )</li>
-								<li>Выезд на дом со всем необходимым реквизитом</li>
-								<li>Авторская обработка 20 фотографий на диск</li>
-								<li>Фото для ретуши предоставляю на выбор</li>
-								<li>фото книга 20х20 , 20 разворотов в твёрдом переплёте</li>
-								<li>Время съёмки 2,5-3 часа</li>
-								<li>Передача фотографий c доставкой на дом</li>
-								<li>Срок готовности фотографий 1-1,5 месяц фото книга 2 месяца</li>
-							</ul>
-						</div>
-						<div class="wow-pricing-button">
-							<a href="#" class="wow-button buttonprice" target="_self" rel="nofollow"><span
-									class="wow-button-inner">Заказать</span></a>
-						</div>
-					</div>
-				</div>
-				<!-- /.col-md-4 -->
+				<!--Modal: Login / Register Form Demo-->
 			</div>
 		</div>
 	</section>
@@ -449,12 +405,16 @@
 						Есть вопросы ? Пишите !
 					</p>
 					<div class="regularform">
-						<form method="post" action="" id="contactform" class="text-left">
-							<input name="name" type="text" class="col-md-6 norightborder" placeholder="Имя *">
-							<input name="email" type="email" class="col-md-6" placeholder="Эл. адресс *">
-							<textarea name="comment" class="col-md-12" placeholder="Ваш вопрос *"></textarea>
-							<button type="button" class="btn btn-round btn-white btn-xl"
-								style="position: relative;left: 50%;transform: translate(-50%, 0);width: 35%;border: 1px solid black;">Отправить
+						<form method="POST" action="{% url 'questions' %}" id="contactform" class="text-left">
+							{% csrf_token %}
+							<input name="name" type="text" class="col-md-6 col-sm-6 norightborder" required
+								placeholder="Имя *">
+							<input name="email" type="email" class="col-md-6 col-sm-6 " required
+								placeholder="Эл. адресс *">
+							<textarea name="comment" class="col-md-12 col-sm-12" required
+								placeholder="Ваш вопрос *"></textarea>
+							<button type="submit" class="btn btn-round btn-white btn-xl"
+								style="position: relative;left: 50%;transform: translate(-50%, 0);border: 1px solid black;">Отправить
 								сообщение</button>
 
 
