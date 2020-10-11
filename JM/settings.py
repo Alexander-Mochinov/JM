@@ -16,7 +16,7 @@ SECRET_KEY = 'uxlhs*f@vut0na0)e6u5%upvs6@45vy4s+q4%sj^#(cih!*(g&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['julia-mochinova.ru',]
 
 
 # Application definition
