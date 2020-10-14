@@ -105,14 +105,14 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 col-lg-offset-1 text-center font_logo_ciril ">
-					<img src="{% static 'img/logo-footer.png' %}" alt="" style="width: 40%;">
+					<img src="{% static 'img/logo-footer.png' %}" class="font_logo_jm" alt="" style="width: 40%;">
 					<h2>Обо мне:</b></h2>
 					<hr>
 					<p class="font_sizes"> Меня зовут Юля, я сертифицированный фотограф, специализируюсь на съемке
 						новорожденных малышей в
 						г. Самара.<br>
 						В первую очередь я мама и мне очень важно , чтобы сьёмка проходила в комфортных и безопасных
-						условиях для малыша, а мама
+						условиях для малыша, а мама малыша
 						испытывала доверие, спокойствие и радость во время съёмки.
 						В процессе работы я вкладываю свою душу, любовь, энергию для достижения качественного
 						результата.
@@ -122,7 +122,7 @@
 						Я наполняю семейные ценные кадры волшебством и самыми тёплыми воспоминаниями.
 					</p>
 					<div class="text-center">
-						<img src="{% static 'img/iam.jpg' %}" class="rounded-circle"
+						<img src="{% static 'img/iam.jpg' %}" class="rounded-circle font_logo_jm"
 							style="width:35%;border-radius: 58%;">
 					</div>
 
@@ -175,7 +175,7 @@
 						<img src="">
 						{% endif %}
 						<div class="con-text">
-							<h2>{{cart.heading}}</h2>
+							<h2 style="padding: 35px;">{{cart.heading}}</h2>
 							<p>
 								<a href="{{cart.get_absolute_url}}"><button>Читать</button></a>
 							</p>
@@ -294,6 +294,9 @@
 				{% for price in prices %}
 				<div class="col-md-3 ">
 					<div class="coast">
+						<div class="id_order" style="display: none;">
+							{{price.id}}
+						</div>
 						<div class="prev_text">
 							<h4>{{price.heading}}</h4>
 						</div>
@@ -303,20 +306,109 @@
 							{{price.pakeges|linebreaks}}
 						</div>
 						<div class="order">
-							<a href="{% url 'order' price.id %}">
-								<button type="button" class="btn btn-round btn-white btn-xl"
-									style="left: 50%;transform: translate(-50%, 0);border: 1px solid black;outline: transparent;">Заказать</button>
+							<a href="#">
+								<button type="button" class="btn btn-round btn-white btn-xl edit_form"
+									style="left: 50%;transform: translate(-50%, 0);border: 1px solid black;outline: transparent;"
+									id="open_modeal_edit">
+									Заказать
+								</button>
 							</a>
 						</div>
 					</div>
 				</div>
 				{% endfor %}
 			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<div class="business-card">
+						<h3 class="logo">
+							<a href="">Минуточку внимания!<br>
+								Запись на фотосессию осуществляется по предоплате <br>. Оставшаяся сумма, оплачиваются
+								заказчиком в день фотосессии.<br>
+								Предоплата учитывается при окончательном расчете.<br>
+								Я храню Вашу съемку на компьютере в течении месяца после отдачи! <br>У вас есть
+								возможность
+								выбрать понравившиеся кадры на
+								дополнительную обработку. Пожалуйста, как получите фото, сразу скопируйте его на
+								компьютер и сделайте дополнительную
+								копию на флеш-карту! <br>Так Вы обезопасите себя от потери таких уникальных и дорогих
+								сердцу
+								кадров.<br>
+								Исходные RAW файлы я не отдаю.<br>
+								мы изначально снимаем определенное количество кадров, согласно пакету. Съемка
+								новорожденного-это определенный вид
+								съемки, где мы не можем попросить малыша лечь в ту или иную позу, показать эмоции,
+								улыбнуться нам и тд.<br>
+								Кроха живет своей жизнью ,а мы лишь создаем комфортные условия и подстраиваемся под
+								него. Приглашая фотографа к своему
+								малышу ,Вы должны это понимать. <br>Есть спокойные детки ,которые сладко спят всю
+								съёмку, а
+								есть те ,кому совсем не нравится
+								,что их решили пофотографировать ,показывают свой характер.<br>
+								Я благодарна всем , кто позволяет использовать фотографии, полученные в результате наших
+								фотосессий, у меня в портфолио
+								,в конкурсах и на выставках(не коммерческое использование). Они демонстрируют мой
+								профессиональный уровень и рост!<br>
+								Договариваясь о фотосъемке , вы соглашаетесь на мой стиль обработки, последующую ретушь
+								снимков ,мое видение и выборку
+								фотографий. В обработку фотографии входит цветокоррекция, кадрирование, частичная ретушь
+								на портретах.<br>
+								Но если по каким либо причинам Вы хотите чтобы съемка была конфиденциальной, сообщите
+								мне пожалуйста об этом заранее. <br>
+								Я
+								уважаю Ваше право на личную жизнь и допополнительной платы за конфиденциальность не
+								беру!
+								Если есть вопросы я по максимуму уделю вам время , чтоб не осталось никах сомнений по
+								поводу съёмки. <br>Спасибо за ваше
+								доверие.<br>
+
+								Фотосъёмка проходит в моей специализированной студии для новорожденных ,где есть все
+								необходимые температурные ,световые
+								условия и реквизит. Территориально студия находиться мкр .Южный город.
+								Если вам удобно проводить съёмку у вас дома я приеду к вам со всем необходимым
+								реквизитом .</span></a>
+						</h3>
+					</div>
+				</div>
+			</div>
+			<div id="modal_edit" class="modal">
+				<div class="container">
+					<div class="row">
+						<div class="bg_font"
+							style="height: auto;background-color: white;border-radius: 50px;overflow: hidden;padding: 33px;">
+							<div class="col-md-8 col-md-offset-2 text-center">
+								<div class="regularform">
+									<h1>Заказ на : <div id="text_order"></div>
+									</h1>
+									<form method="POST" action="" id="contactform" class="text-left change_data_form">
+										{% csrf_token %}
+										<input name="name" type="text" class="col-md-6 col-sm-6 norightborder" required
+											placeholder="Имя *" style="z-index: 9999999;">
+										<input name="email" type="email" class="col-md-6 col-sm-6 " required
+											placeholder="Эл. адресс *" style="z-index: 9999999;">
+										<input type="text" name="phone" required id="" class="col-md-12 col-sm-12" ,
+											placeholder="Контактный номер">
+										<textarea name="comment" class="col-md-12 col-sm-12" required
+											placeholder="Ваш комментарий(по желанию) *"
+											style="z-index: 9999999;"></textarea>
+										<div class="divs"
+											style="position: relative;left: 50%;transform: translate(-50%, 0);">
+											<button type="submit" class="btn btn-round btn-white btn-xl">Сделать
+												заказ</button>
+											<button type="button" class="btn btn-round btn-white btn-xl"
+												onclick="document.getElementById('modal_edit').style.display='none'"
+												class="fluid ui button">Отмена</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="container">
 			<div class="row">
-
-				<!--Modal: Login / Register Form Demo-->
 				<div class="modal fade" id="modalLRFormDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 					aria-hidden="true">
 					<div class="modal-dialog cascading-modal" role="document">
@@ -345,13 +437,10 @@
 						</div>
 					</div>
 				</div>
-				<!--Modal: Login / Register Form Demo-->
 			</div>
 		</div>
 	</section>
 
-	<!-- Section Social
-	================================================== -->
 	<section id="social" class="parallax parallax-image"
 		style="background-image: url('{% static 'img/1.jpg' %}'); background-position: 50% -78px;">
 		<div class="overlay" style="background:#222;opacity:0.5;">
@@ -431,7 +520,84 @@
 		</div>
 	</section>
 
-	<!-- jQuery -->
+	<style>
+		.modal {
+			display: none;
+			position: fixed;
+			z-index: 999999;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgb(0, 0, 0);
+			background-color: rgba(0, 0, 0, 0.4);
+			padding-top: 60px;
+		}
+
+		.modal-content {
+			background-color: #fefefe;
+			margin: 5% auto 15% auto;
+			border: 1px solid #888;
+			width: 50%;
+		}
+
+		span.psw {
+			float: right;
+			padding-top: 16px;
+		}
+
+		.close {
+			position: absolute;
+			right: 25px;
+			top: 0;
+			color: #000;
+			font-size: 35px;
+			font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+			color: red;
+			cursor: pointer;
+		}
+
+		.animate {
+			-webkit-animation: animatezoom 0.6s;
+			animation: animatezoom 0.6s
+		}
+
+		@-webkit-keyframes animatezoom {
+			from {
+				-webkit-transform: scale(0)
+			}
+
+			to {
+				-webkit-transform: scale(1)
+			}
+		}
+
+		@keyframes animatezoom {
+			from {
+				transform: scale(0)
+			}
+
+			to {
+				transform: scale(1)
+			}
+		}
+
+		@media screen and (max-width: 300px) {
+			span.psw {
+				display: block;
+				float: none;
+			}
+
+			.cancelbtn {
+				width: 100%;
+			}
+		}
+	</style>
 	<script src="{% static 'js/jquery.js.download' %}"></script>
 	<script src="{% static 'js/bootstrap.min.js.download' %}"></script>
 	<script src="{% static 'js/parallax.js.download' %}"></script>
@@ -441,6 +607,32 @@
 	<script src="{% static 'js/wow.min.js.download' %}"></script>
 	<script src="{% static 'js/common.js.download' %}"></script>
 
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script>
+		//Удалить пробелы с url
+		$(function () {
+			$('.edit_form').on('click', function () {
+				let str = $(this).parents('div').children('.coast');
+				let type_order = str.children('.prev_text').text();
+				let id_order = str.children('.id_order').text();
+				// console.log(type_order.text())
+				// let topic = $.trim(block_info.children('.header').text());
+				let url_update = '/order/' + $.trim(id_order) + '/';
+				$('#modal_edit').css('display', 'block');
+				$('.change_data_form').attr('action', url_update);
+				$('#text_order').text(type_order);
+
+			});
+			$(document).mouseup(function (e) { // событие клика по веб-документу
+				var div = $("#change_data"); // тут указываем ID элемента
+				if (!div.is(e.target) // если клик был не по нашему блоку
+					&& div.has(e.target).length === 0) { // и не по его дочерним элементам
+					div.css('display', 'none');// скрываем его
+				}
+			});
+		})
+
+	</script>
 
 </body>
 

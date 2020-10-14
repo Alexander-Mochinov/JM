@@ -7,7 +7,17 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 def order(request, id):
-
+	price = Prices.objects.get(id = id)
+	if request.method == 'POST':
+		name = request.POST.get('name','')
+		email = request.POST.get('email', '')
+		message = request.POST.get('comment', '')
+		phone = request.POST.get('phone', '')
+		from_email = settings.EMAIL_HOST_USER
+		to_email = [from_email]
+		subject = 'Сообщение от пользователя'
+		message = '{} \nКонтактные данные: \nПочта: {}\nКонтактный номер телефона: {} \nСообщение: {}\nЦеновой тип : {}'.format(name, email, phone,message,price)
+		send_mail(subject,message,from_email,to_email,fail_silently=False,)	
 	return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 	
 def index(request):
@@ -35,7 +45,7 @@ def create_order(request, id_news):
 	if request.method == 'POST':
 		name = request.POST.get('name')
 		email = request.POST.get('email')
-		message = request.POST.get('comment')
+		message = request.POST.get('comment', 'Пусто')
 		phone = request.POST.get('phone')
 		Orders.objects.create(
 			name = name,

@@ -20,14 +20,15 @@
 												<div class="intro">
 													<a href="#">
 														<h1 class="title">
-															<span class="underline">{{news.heading_for_img_one}}</span>
+															<span
+																class="underline">{% if news.heading_for_img_one %}{{news.heading_for_img_one}}{% endif %}</span>
 														</h1>
 													</a>
 												</div>
 											</div>
 											<div class="column-xs-12 column-md-10">
 												<div class="image-holder">
-													<img
+													<img class="image_vh"
 														src="{% if news.project_img_one %}{{news.project_img_one.url}}{% else %}{% endif %}">
 												</div>
 												<div class="grid">
@@ -36,11 +37,13 @@
 															<a href="#">
 																<h1 class="title">
 																	<span
-																		class="underline">{{news.heading_for_img_one}}</span>
+																		class="underline">{% if news.heading_for_img_one %}{{news.heading_for_img_one}}{% endif %}</span>
 																</h1>
 															</a>
 														</div>
-														<p class="description">{{news.post_for_img_one}}</p>
+														<p class="description">
+															{% if news.post_for_img_one %}{{news.post_for_img_one}}{% endif %}
+														</p>
 													</div>
 												</div>
 											</div>
@@ -57,14 +60,14 @@
 												<div class="intro">
 													<a href="#">
 														<h1 class="title"><span
-																class="underline">{{news.heading_for_img_two}}</span>
+																class="underline">{% if news.heading_for_img_two %}{{news.heading_for_img_two}}{% endif %}</span>
 														</h1>
 													</a>
 												</div>
 											</div>
 											<div class="column-xs-12 column-md-10">
 												<div class="image-holder">
-													<img
+													<img class="image_vh"
 														src="{% if news.project_img_two %}{{news.project_img_two.url}}{% else %} {% endif %}">
 												</div>
 												<div class="grid">
@@ -72,11 +75,13 @@
 														<div class="intro show-mobile">
 															<a href="#">
 																<h1 class="title"><span
-																		class="underline">{{news.heading_for_img_two}}</span>
+																		class="underline">{% if news.heading_for_img_two %}{{news.heading_for_img_two}}{% endif %}</span>
 																</h1>
 															</a>
 														</div>
-														<p class="description">{{news.post_for_img_two}}</p>
+														<p class="description">
+															{% if news.post_for_img_two %}{{news.post_for_img_two}}{% endif %}
+														</p>
 													</div>
 												</div>
 											</div>
@@ -92,14 +97,14 @@
 												<div class="intro">
 													<a href="#">
 														<h1 class="title"><span
-																class="underline">{{news.heading_for_img_three}}</span>
+																class="underline">{% if news.post_for_img_three %}{{news.heading_for_img_three}}{% endif %}</span>
 														</h1>
 													</a>
 												</div>
 											</div>
 											<div class="column-xs-12 column-md-10">
 												<div class="image-holder">
-													<img
+													<img class="image_vh"
 														src="{% if news.project_img_three %}{{news.project_img_three.url}}{% else %}{% endif %}">
 												</div>
 												<div class="grid">
@@ -111,7 +116,9 @@
 																</h1>
 															</a>
 														</div>
-														<p class="description">{{news.post_for_img_three}}</p>
+														<p class="description">
+															{% if news.post_for_img_three %}{{news.post_for_img_three}}{% endif %}
+														</p>
 													</div>
 												</div>
 											</div>
@@ -122,11 +129,11 @@
 								<div class="grid">
 									<div class="column-xs-12">
 										<div class="controls">
-											<button class="previous">
+											<button class="previous bt_on">
 												<span class="visually-hidden">Previous</span>
 												<span class="icon arrow-left" aria-hidden="true"></span>
 												</a>
-												<button class="next">
+												<button class="next bt_on">
 													<span class="visually-hidden">Next</span>
 													<span class="icon arrow-right" aria-hidden="true"></span>
 													</a>
@@ -187,7 +194,7 @@
 						<input name="email" type="email" required class="col-md-6 col-sm-12" placeholder="Эл. почта *">
 						<input type="text" name="phone" required id="" class="col-md-12 col-sm-12" ,
 							placeholder="Контактный номер">
-						<textarea name="comment" required class="col-md-12 col-sm-12"
+						<textarea name="comment" class="col-md-12 col-sm-12"
 							placeholder="Комментарий к заказу (по желанию)*"></textarea>
 						<button type="submit" class="btn btn-round btn-white btn-xl"
 							style="position: relative;left: 50%;transform: translate(-50%, 0);width: auto;border: 1px solid black;">Заказать</button>

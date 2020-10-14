@@ -227,14 +227,14 @@ header .header-content .header-content-inner p {
 			background-position: center;
 			background-size: cover;
 		}
+		.font_logo_jm {
+			width: 65% !important;
+		}
 	}
-}
-
-/* .navbar-default .nav>li>a, .navbar-default {
+	/* .navbar-default .nav>li>a, .navbar-default {
 		font-size: 7px;
 	} */
-
-/* .order a button {
+	/* .order a button {
 		position: relative !important;
 		bottom: 3px;
 	}
@@ -242,7 +242,6 @@ header .header-content .header-content-inner p {
 		height: auto !important;
 		margin: 30px !important;
 	} */
-
 }
 
 .section-heading {
@@ -1315,7 +1314,7 @@ input.error, textarea.error {
 }
 
 section {
-	padding: 80px 0px;
+	padding: 50px 0px;
 }
 
 .tab-content {
@@ -1419,6 +1418,7 @@ section {
 	padding: 35px;
 	padding-bottom: 130px;
 	background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(208 148 114 / 1) 100%);
+	width: 350px!important;
 }
 
 .card .con-text p {
@@ -1904,4 +1904,71 @@ li {
 .material-form__button:active {
 	background-color: #0960a5;
 	transform: scale(0.9);
+}
+
+.business-card {
+	top: 25px;
+	padding: 20px;
+	position: relative;
+}
+
+.business-card:before {
+	content: "";
+	position: absolute;
+	border-top: 6px solid #77622ba6;
+	border-left: 6px solid #77622ba6;
+	width: 30px;
+	height: 30px;
+	top: 24px;
+	left: 24px;
+	z-index: 3;
+}
+
+.business-card h3 {
+	min-width: 300px;
+	text-align: center;
+	border: 4px solid #77622ba6;
+	position: relative;
+	padding: 50px 0;
+	margin: 0;
+	font-family: 'Cormorant SC', serif;
+}
+
+.business-card h3:before {
+	content: "";
+	position: absolute;
+	width: 64px;
+	height: 46px;
+	border-bottom: 4px solid #77622ba6;
+	left: -4px;
+	top: -4px;
+	background: #ffffff;
+}
+
+.business-card h3:after {
+	content: "";
+	position: absolute;
+	width: 14px;
+	height: 60px;
+	border-top: 4px solid #77622ba6;
+	border-left: 4px solid #77622ba6;
+	left: 42px;
+	top: -4px;
+}
+
+.business-card a {
+	display: block;
+	text-decoration: none;
+	color: #77622ba6;
+	padding: 28px 24px 35px 67px;
+	text-shadow: 1px 1px 0 white;
+}
+
+.business-card span {
+	display: block;
+	text-transform: uppercase;
+	font-size: .5em;
+	margin-top: 5px;
+	letter-spacing: 2px;
+	font-weight: 300;
 }

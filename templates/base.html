@@ -34,12 +34,15 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand page-scroll" href="/">
-					Julia Mochinova
+				<a href="/">
+					<img class="logo__img" src="{% static 'img/logo.png' %}" alt="logodayana" style="width: 85px;">
+					<!-- Julia Mochinova -->
 				</a>
 			</div>
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav navbar-right">
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="
+	    padding: 15px 0 0;">
+				<ul class="nav navbar-nav navbar-right menu__list">
 					<li class="active">
 						<a class="page-scroll" href="/#page-top">Главная</a>
 					</li>
@@ -47,8 +50,15 @@
 						<a class="page-scroll" href="/#about">Обо мне</a>
 					</li>
 					<li class="">
+						<a class="page-scroll" href="/#Q_A_A">Вопросы</a>
+					</li>
+					<li class="">
+						<a class="page-scroll" href="/#anons">Анонсы</a>
+					</li>
+					<li class="">
 						<a class="page-scroll" href="/#portfolio">Портфолио</a>
 					</li>
+
 					<li class="">
 						<a class="page-scroll" href="/#pricing">Цены</a>
 					</li>
@@ -57,7 +67,9 @@
 					</li>
 				</ul>
 			</div>
+			<!-- /.navbar-collapse -->
 		</div>
+		<!-- /.container -->
 	</nav>
 	{% block content %}
 	{% endblock %}

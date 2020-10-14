@@ -53,23 +53,23 @@ class News(models.Model):
 	# Фото проекта 
 	project_img_one = models.ImageField( upload_to='uploads/images/%Y/%m/%d/',blank=True)
 	
-	heading_for_img_one =  models.CharField('Заголовок к первой фотографии',max_length = 350,null=True)
+	heading_for_img_one =  models.CharField('Заголовок к первой фотографии',max_length = 350,blank=True,null=True)
 
-	post_for_img_one =  models.CharField('Описание к первой фотографии',max_length = 350,null=True)
+	post_for_img_one =  models.CharField('Описание к первой фотографии',max_length = 350,blank=True,null=True)
 
 	# Фото проекта 
 	project_img_two = models.ImageField( upload_to='uploads/images/%Y/%m/%d/',blank=True)
 	
-	heading_for_img_two =  models.CharField('Заголовок ко второй фотографии',max_length = 350,null=True)
+	heading_for_img_two =  models.CharField('Заголовок ко второй фотографии',max_length = 350,blank=True,null=True)
 	
-	post_for_img_two =  models.CharField('Описание ко второй фотографии',max_length = 350,null=True)
+	post_for_img_two =  models.CharField('Описание ко второй фотографии',max_length = 350,blank=True,null=True)
 
 	# Фото проекта 
 	project_img_three = models.ImageField( upload_to='uploads/images/%Y/%m/%d/',blank=True)
 
-	heading_for_img_three =  models.CharField('Заголовок к третьей фотографии',max_length = 350,null=True)
+	heading_for_img_three =  models.CharField('Заголовок к третьей фотографии',max_length = 350,blank=True,null=True)
 
-	post_for_img_three =  models.CharField('Описание к третьей фотографии',max_length = 350,null=True)
+	post_for_img_three =  models.CharField('Описание к третьей фотографии',max_length = 350,blank=True,null=True)
 
 	publication_date = models.DateField("Дата публикации", default=date.today, db_index=True)
 
